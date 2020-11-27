@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="stylesheet"
+            type="text/css" 
+            href="css/ch.css"
+        />
+        
+        <link rel="stylesheet" 
+            type="text/css" 
+            href="css/plateau.css"
+        />
+
+        <title> Chess Highlight></title>
+		<style type="text/css">
+			* { margin : 0; padding : 0; }
+			p { margin : 5px; padding : 1px; }
+		</style>
+
+        <!-- tier libraries -->
+        <script type="text/javascript" src="js/lib/prototype.js"></script>
+        <script type="text/javascript" src="js/lib/require.js" data-main="js/app.js"></script>
+
+	<!-- core -->
+	<script type="text/javascript" src="js/version2.js"></script>
+    <!--
+    <script type="text/javascript" src="js/test/version2.js"></script>
+    -->
+
+		<script type="text/javascript" src="js/duplicata.js"></script>
+    <!--
+    <script type="text/javascript" src="js/test/duplicata.js"></script>
+    -->
+
+		<script type="text/javascript" src="js/partie.js"></script>
+    <!--
+    <script type="text/javascript" src="js/test/partie.js"></script>
+    -->
+
+		<script type="text/javascript" src="js/app/echiquier.js"></script>
+		<script type="text/javascript" src="js/app/carre.js"></script>
+
+		<script type="text/javascript" src="js/chesshighlight.js"></script>
+
+		<script type="text/javascript" src="js/app/pdv.js"></script>
+		<script type="text/javascript" src="js/app/mc.js"></script>
+
+		<script type="text/javascript" src="js/app/ldc.js"></script>
+
+
+		<script type="text/javascript" src="js/app/game.js"></script>
+
+
+    </head>
+    <body>
+        
+        <div class="ui">
+
+            <div class="top-bar">
+				<p>
+					<span id="panel-partie"></span>
+					<span class="title">ColorChess.</span>
+					<span class="action" style="float:right;">
+						<a href="http://www.eozine.fr" title="retour au site eozine.fr">
+							<b style="font-size : 16pt;">[go to eozine.fr]</b>
+						</a>
+					</span>
+				</p>
+			</div>
+
+            <div class="middle-area">
+
+				<ul class="cardbox">
+					<li id="cardbox-item-plateau">
+						<div id="plateau" class="plateau"></div>
+
+						<script type="text/javascript">
+
+							function patchIE() {
+								// old IE patch ?
+								var ua = navigator.userAgent;
+								consle.log(ua);
+								document.write('<div id="plateau_table"></div>');
+								$('plateau_table').refresh = function() { console.log(ua); };
+							}
+						</script>
+					</li>
+				</ul>
+
+				<!-- -->
+				<ul class="cardbox">
+
+					<li id="cardbox-item-options">
+						<h2>Options - apparence de l'échiquier</h2>
+						<p>
+							Point de vue
+							&nbsp;
+							<input id="Nord-pdv"   type="button" value="Nord" />
+							&nbsp;
+							<input id="Est-pdv"    type="button" value="Est" />
+							&nbsp;
+							<input id="Sud-pdv"    type="button" value="Sud" />
+							&nbsp;
+							<input id="Ouest-pdv"  type="button" value="Ouest" />
+						</p>
+						<p>
+							<input id="afficher-cp" type="checkbox" />
+							<label for="afficher-cp">afficher les compteurs de pression.</label>
+						</p>
+
+						<h2>Options - modèles de couleurs</h2>
+						<p>Selectionnez un modele :</p>
+						<select id="selectModeleCouleurs">
+							<option value="STANDARD">Standard</option>
+							<option value="OBNK_BASIQUE">OBNK basique</option>
+							<option value="OBNK_CONTRASTE">OBNK contrasté</option>
+							<option value="OBNK_GRADIENT" selected>OBNK dégradé adouci</option>
+						</select>
+
+						<p>Afficher les influences :<br/>
+							<input type="radio" name="rbMethode" id="rbMethode-tOus"     class="rbMethode" value="tOus" checked>Les deux camps<br/>
+							&nbsp;
+							<input type="radio" name="rbMethode" id="rbMethode-Blancs"   class="rbMethode" value="Blancs">des Blancs seuls<br/>
+							&nbsp;
+							<input type="radio" name="rbMethode" id="rbMethode-Noirs"    class="rbMethode" value="Noirs">des Noirs seuls<br/>
+							&nbsp;
+							<input type="radio" name="rbMethode" id="rbMethode-Konflits" class="rbMethode" value="Konflits">uniquement zones d'affrontement
+						</p>
+					</li>
+
+					<li id="cardbox-item-historique">
+						<!-- <p>historique ici.</p> -->
+						<h2>Historique</h2>
+						<p>
+						  <input type="button" id="init-game-button"  value="Initialiser partie">
+						  <input type="button" id="cancel-button"  value="Annuler mouvement">
+						</p>
+
+						<script type="text/javascript">
+							function test_console() {
+								if(console) {
+									if(console.log) {
+										return true;
+									}
+									return 'console is defined';
+								}
+								return false;
+							}
+						</script>
+
+						<p>
+							TESTS
+							<input type="button" value="console.log" onclick="alert('console logging : ' + test_console());" />
+						</p>
+
+					</li>
+
+					<li id="cardbox-item-ldc">
+						<h2>Console de commandes</h2>
+						<p>exemple de commande : 'aide' pour avoir de l'aide !</p>
+						<p>
+							<input type="text" id="ldc-in" size="40" />
+							<input type="button" id="ldc-button" value="OK" />
+						</p>
+						<textarea id="ldc-out" rows="25" cols="80" style="font-size:small;"></textarea>
+					</li>
+
+					<li id="cardbox-item-a-propos">
+
+						<h2>A propos</h2>
+						<p>
+							Bienvenue sur ColorChess (la nouvelle interface revue et corrigee de ChessHighLight) !
+							C'est un programme didactique d'apprentissage du jeu d'Echecs.
+						</p>
+						<p>
+							<i>pour une experience d'utilisation agreable, veuillez mettre votre navigateur web en plein ecran.</i>
+							<br />
+							<i>for a better user experience, please toggle your browser's window in full screen mode.</i>
+						</p>
+
+						<!-- <div id="panel-partie"> -->
+						<h2>Partie</h2>
+
+
+						<p>
+							version de test.
+							Les mouvements : petit-roque, grand-roque, promotion et prise en âssant ne sont pas definis.
+						</p>
+						<p>
+							vous pouvez deplacer les pieces et observer l'evolution des influences.
+						</p>
+
+						<div id="legende">
+						<h2>Légende du modèle OBNK</h2>
+						<p>Ce modèle de couleurs est organisé comme un feu tricolore : s'il n'y a pas de danger, c'est vert, et s'il y en a ça devient rouge.</p>
+						<p>Et quand un camp met significativement plus de pression que son adversaire sur une case de l'échiquier, elle prend la couleur de ce camp.</p>
+						<p>Entre deux, les cases prennent des couleurs intermédaires qui forment un dégradé. L'image ci-dessous en est l'illustration</p>
+						<p>
+							<img src="degrade_OBNK.png" alt="Jeu d'echecs : le degrade OBNK (0-pression Blancs-pression Noirs-Konflit), lire explications plus bas">
+						</p>
+						<p>Que voit-on ?</p>
+						<p>
+							Un graphique représentant une grille de petits carrés colorés.
+						</p>
+						<ul>
+							<li>La case supérieure gauche est verte, quand elle est neutre (O) c'est à dire sans pression d'aucun des deux camps</li>
+							<li>Si on parcourt dans le sens des abscisses (pression du camp blanc) les cases blanchissent (B)</li>
+							<li>Si on parcourt dans le sens des ordonnées (pression du camp noir) les cases noircissent (N)</li>
+							<li>si on parcourt suivant le sens de la diagonale principale (pression des deux camps croissantes) alors les cases "chauffent" en passant par vert - jaune - orange - rouge</li>
+						</ul>
+						<p>Le dégradé catégorise en 0, 1, 2, 3 et plus, c'est à dire 4 par 4 = 16 cases car il a été fait à la main et en pratique, 3 pièces de chauqe camp sur une case à un tour du jeu, c'est déjà beaucoup, subjectivement. Note : le maximum de pression que peut mettre un camp sur une case est de 9, et le conflit maximal possible en intensité est 6 contre 6, testé sur échiquier réel.</p>
+
+					</div>
+
+					</li>
+				</ul>
+
+            </div>
+
+            <div class="bottom-bar">
+				<ul class="horizontal-menu">
+					<li>
+						<a href="#cardbox-item-plateau">plateau</a>
+					</li>
+					<li>
+						<a href="#cardbox-item-options">options</a>
+					</li>
+					<li>
+						<a href="#cardbox-item-historique">historique</a>
+					</li>
+					<li>
+						<a href="#cardbox-item-ldc">commandes</a>
+					</li>
+					<li>
+						<a href="#cardbox-item-a-propos">a propos</a>
+					</li>
+				</ul>
+            </div>
+        </div>
+		<hr class="spacer" style="height:0;width:0;clear:both;" />
+  </body>
+</html>

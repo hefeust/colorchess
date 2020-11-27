@@ -1,0 +1,63 @@
+<html>
+<head>
+
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript" src="version2.js"></script>
+<script type="text/javascript" src="partie.js"></script>
+<script type="text/javascript">
+
+function logProps(obj)
+{
+  console.log("LOG PRPERTIES");
+  var tab = [];
+  for(p in obj)
+  {
+    var i = String(obj[p]).indexOf('(');
+    var value = (i == -1) ? obj[p] : (obj[p].toString().substring(0, i)).split(' ')[0] + '()' ;
+    tab.push(p + " : " + value);
+  }
+  console.log(tab.join(' '));
+}
+
+//logProps(Object);
+
+window.onload = function()
+{
+
+  var p = new Position();
+
+  var TB = new Tour(Camps.Blancs);
+  var DN = new Dame(Camps.Noirs);
+
+  p.poser("b2", TB);
+  p.poser("e5", DN);
+
+  console.log(p._influences.obtenirRefsVisant("b5"));
+  console.log(p._influences.obtenirRefsVisees("b2"));;
+
+  //logProps(p.Influences._stockage);
+
+//  console.log(p);
+ // console.log(p._places['b5'].compterPressions());
+
+// $('area1').value = Camps.Blancs + ' ' + DN.toString(1);
+
+  $('area1').value = p.toString();
+
+  var P = new Partie();
+  P.reset(p, Camps.Noirs);
+  P.jouer("e5", "b2");
+
+}
+
+</script>
+
+</head>
+<body>
+
+<h1>Tests de la version corrigée de CH</h1>
+<textarea id="area1" cols="100" rows="25"></textarea>
+
+</body>
+
+</html>

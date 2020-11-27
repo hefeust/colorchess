@@ -1,0 +1,70 @@
+<html>
+<head>
+
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript" src="version2.js"></script>
+<script type="text/javascript" src="partie.js"></script>
+<script type="text/javascript">
+
+function logProps(obj)
+{
+  console.log("LOG PRPERTIES");
+  var tab = [];
+  for(p in obj)
+  {
+    var i = String(obj[p]).indexOf('(');
+    var value = (i == -1) ? obj[p] : (obj[p].toString().substring(0, i)).split(' ')[0] + '()' ;
+    tab.push(p + " : " + value);
+  }
+  console.log(tab.join(' '));
+}
+
+//logProps(Object);
+
+window.onload = function()
+{
+
+// console.log('DT : ' + Deplacement.Types);
+
+$('area1').value = '';
+
+  var p = new Position();
+
+  var TB = new Tour(Camps.Blancs);
+  var FN = new Fou(Camps.Noirs);
+
+  p.poser("b2", TB);
+  p.poser("e5", FN);
+
+  //console.log(p._influences.obtenirRefsVisant("b5"));
+  //console.log(p._influences.obtenirRefsVisees("b2"));;
+  //  console.log(p);
+  // console.log(p._places['b5'].compterPressions());
+  //  $('area1').value = p.toString();
+  //  $('area1').value = p;
+
+  var P = new Partie();
+  P.reset(p, Camps.Noirs);
+  $('area1').value += P;
+
+  P.jouer("e5", "b2");
+  $('area1').value += P;
+  // console.log(P);
+
+
+ // var t  = [1,2,3];
+ // t.push(4);
+ // console.log(t);
+}
+
+</script>
+
+</head>
+<body>
+
+<h1>Tests de la version corrigée de CH</h1>
+<textarea id="area1" cols="100" rows="25"></textarea>
+
+</body>
+
+</html>

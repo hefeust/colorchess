@@ -1,0 +1,36 @@
+
+
+--
+-- CHESS HIGHLIGHT
+--
+-- par Héfeust - www.eozine.fr
+--
+
+-- SEPTEMBRE 2007
+
+-- DOCUMENTATION DES SOURCES --
+
+* contenu *
+
+Chess Highlight est composé d'une page HTML appelant des fichiers Javascript externes. Il n'y a pas ou presque de morceaux de programme dans la page index.html, les évènements eux-même sont gérés par un jeu de fonctions "observe" venant de la librairie Prototype.
+
+En partie du fond de l'algorithme et en remontant vers l'interface graphique, on trouve : 
+- version2.js : le noyau de fonctions et objets nécessaires à poser des pièces sur une position
+- partie.js : la logique de déroulement d'une partie
+- chesshighlight.js : le moteur graphique
+- paramgraphs.js : constantes pour l'affichage coloré et les points de vue de l'échiquier
+- ctrlpanel.js : attache les fonctions au panneau de commande et fournit le chargeur window.onload
+- index.html : la page conteneur
+
+Cette organisation du code - et notamment les noms de fichiers - n'est pas définitive et pourrait changer subtilement à l'avenir.
+
+On trouve également la bien pratique librairie "prototype.js" et de nombreux appels à la console de firebug, bien que l'interface dispose d'une console rudimentaire également.
+
+Si vous souhaitez lire le code depuis l'interface vers le fond, considérez les fichiers en ordre inverse (et analysez 
+leurs méthodes de bas en haut)
+
+Le source est codé avec des noms de variable français et se lit de façon assez naturelle grâce aux possibilité d'rganisation de la programmatoion prototype. Quelques clés :
+
+ - le mot "case' étant réservé dans le langage, j'ai utilisé les synonymes "place" et "carré" pour désigner les ... cases de l'échiquier, respectivement dans la représentation interne du modèle des influences puis sur celle externe du plateau de jeu.
+ 
+ A suivre...

@@ -1,0 +1,164 @@
+
+.plateau {
+	float : none;
+	clear : both;
+}
+  
+
+
+/* ECHIQUIER */
+
+.plateau
+{
+  float : left;
+  width : 600px;
+  height : 650px;
+  /* background-color : #ffeedd; */
+}
+
+table {
+  padding : 0px;
+}
+
+.Case
+{
+  /* border : 4px solid blue; */
+/*  padding : 4px; */
+  height : 45px;
+  width : 45px;
+  vertical-align : top;     
+  
+}
+
+.CaseBlanche { background-color :#fafafe; }
+.CaseNoire   { background-color :#005080; }
+
+div.CaseDiv
+{
+  position : relative; 
+  height : 50px;
+  width : 50px;  
+  z-index : 0;
+}
+
+div.CaseImg
+{
+  position : absolute;
+  top : 0px;
+  left : 0px;
+  height : 60px; width : 60px;
+  z-index : 1;
+}
+
+div.CaseUp 
+{
+  position : absolute;
+  z-index : 2;
+  
+  top : 1px;
+  left : 1px;
+  height : 1.2em; 
+  width : 0.8em;
+  
+  padding-left : 2px; 
+
+  font-weight : bold;
+  font-size : 0.7em;  
+
+  color : black;
+  background-color : white;
+  border : 1px solid black;
+}
+
+div.CaseDown 
+{
+  position : absolute;
+  z-index : 2;
+  
+  top : 34px;
+  left : 36px;
+  height : 1.2em; 
+  width : 0.8em;
+
+  padding-left : 2px; 
+
+  font-weight : bold;
+  font-size : 0.7em;
+
+  color : white;
+  background-color : black;
+  border : 1px solid white;
+}
+/* ---------- */
+
+.SocleBlancs
+{
+  border : 4px solid white; 
+}
+
+.SocleNoirs
+{
+  border : 4px solid black; 
+}
+
+.SocleNeutre {
+  border : 4px solid #999999; 
+  /* background-color : #0fe; */
+}
+
+.selection
+{
+  border : 4px solid #ff5500; 
+}
+
+.raffraichissement
+{
+  border : 4px solid #0cf0e0	; 
+}
+
+
+/* MODELES DE COULEUR */
+
+.STD_blanche { background-color : #feefdd; }
+
+.STD_noire { background-color : #10a030; }
+
+.OBNK_O { background-color : #00ee00; }
+
+.OBNK_B { background-color : #ffffff; }
+
+.OBNK_N { background-color : #000000; }
+
+.OBNK_K { background-color : #ff0000; }
+
+/* */
+
+.BordV 
+{ 
+  border : 1px solid black;
+  padding : 0px;
+  height : 60px;
+  width : 15px;
+  text-align : center;
+  /* font-size : small; */
+  font-weight : bold;
+}
+
+.BordH 
+{ 
+  border : 1px solid black;
+  padding : 0px;
+  height : 15px;
+  /* width : 60px;*/
+  text-align : center;
+  /* font-size : small; */
+  font-weight : bold;
+}
+
+.Coin
+{ 
+  border : 1px solid black;
+  padding : 0px;
+  height : 15px;
+  width : 15px;
+}

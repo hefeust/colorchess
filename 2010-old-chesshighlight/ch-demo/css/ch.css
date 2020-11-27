@@ -1,0 +1,71 @@
+	
+
+.ui {
+	background-color : #84bb21;
+}
+
+.top-bar {
+	font-size : 2.5em;
+	font-family : Verdana, Helvetica, sans;
+	text-decoration : none; 	
+}
+
+.middle-area {
+	font-weight : bold;
+	font-size ; 2em;
+	font-family : Verdana, Helvetica, sans;
+	text-decoration : none;
+}
+
+.bottom-bar {
+
+}
+
+
+ul.horizontal-menu {
+
+}
+
+ul.horizontal-menu li {
+	background-color : #abcdef; 
+	border : 1px solid black;
+	float : left ;
+	font-size : 2em;
+	margin : 2px;
+	list-style-type : none; 
+	padding : 1px;
+	text-align : center;
+	width : 19%;
+}
+
+ul.horizontal-menu li a {
+	font-weight : bold;
+	font-size ; 3em;
+	font-family : Verdana, Helvetica, sans;
+	text-decoration : none; 
+}
+
+ul.cardbox {
+	height : 590px;
+	text-align : justify;
+	overflow : scroll; /* overflow : hidden; */
+	float: left;
+	width : 49%;
+}
+
+ul.cardbox > li {
+	background-color : #fedcba; 
+	border : 1px solid black;
+	height : 590px;
+	list-style-type : none;
+	margin : 0px;
+	padding : 5px;
+	width : 98%;
+}
+
+ul.cardbox > li a {
+	background-color : #fedcba; 
+	border : 1px solid black;
+	margin : 2px;
+	padding : 1px;
+}

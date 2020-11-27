@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="60"
+   height="60"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45"
+   version="1.0"
+   sodipodi:docbase="E:\_chesshighlight\src\pieces"
+   sodipodi:docname="tour_noire.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="true">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.9"
+     inkscape:cx="30"
+     inkscape:cy="29.037443"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     width="60px"
+     height="60px"
+     showgrid="true"
+     gridempcolor="#3f3fff"
+     gridempopacity="0.89803922"
+     inkscape:object-bbox="false"
+     objecttolerance="10000"
+     inkscape:window-width="1280"
+     inkscape:window-height="909"
+     inkscape:window-x="0"
+     inkscape:window-y="22" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.82315111;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#2323c4;stroke-width:2.36965179;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect2160"
+       width="63.245571"
+       height="63.245571"
+       x="-1.5312774"
+       y="-1.5462229" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#f0f9f6;stroke-width:1.5;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 26.979895,15.744454 L 32.240858,15.744454 C 33.259577,15.744454 35.42424,16.480546 35.42424,17.499265 L 38.44945,52.221563 C 38.44945,53.240282 36.788989,54.144441 35.77027,54.144441 L 23.870651,54.144441 C 22.851931,54.144441 21.107437,53.240282 21.107437,52.221563 L 23.96458,17.667332 C 23.96458,16.648613 25.961175,15.744454 26.979895,15.744454 z "
+       id="rect3153"
+       sodipodi:nodetypes="ccccccccc" />
+    <rect
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#f0f9f6;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5093"
+       width="30.190615"
+       height="6.3836679"
+       x="14.99293"
+       y="47.992317"
+       ry="0.78188831" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#f0f9f6;stroke-width:1.5;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 17.726634,10.929313 L 29.744309,11.853683 L 42.098119,10.929313 C 42.539836,10.929313 42.895441,11.284918 42.895441,11.726635 L 42.895441,16.641665 C 42.895441,17.083381 39.514626,17.859154 39.072909,17.859154 C 37.409348,17.859154 34.365212,19.880163 29.99641,19.901171 C 25.727746,19.972938 21.288231,18.295415 20.583777,17.943188 C 20.14206,17.943188 16.929312,17.083381 16.929312,16.641665 L 16.929312,11.726635 C 16.929312,11.284918 17.284917,10.929313 17.726634,10.929313 z "
+       id="rect8002"
+       sodipodi:nodetypes="ccccccccccc" />
+  </g>
+</svg>
