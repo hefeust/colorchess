@@ -19,7 +19,7 @@
 <svelte:head>
     <title>Colorchess: welcome players !</title>
     <meta name="description" value="Colorchess: colored chess game tactical helper" />
-    <meta name="keywords" value="chess, colors, tacical, game, helper" />
+    <meta name="keywords" value="chess, colors, tactical, game, helper" />
     <meta name="author" value="hefeust" />
 </svelte:head>
 

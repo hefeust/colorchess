@@ -1,14 +1,13 @@
 
 # README
 
-## What's this ?
+Colorchess is a colored chess playing tactical helper.
 
-ColorChess is intended to help you learning chess !
-It colorizes the board tiles depending on sides pression balance on tiles.
+It emphazizes the chess board surface by coloring its squares according to pressions balance of both sides on them sueing game.
 
-It uses a colored gradient schema to do it. If we represent this gradient in a 4x4 matrix, it looks like :
+Here's a resume of these color scheme, where white pression grows horizontally and bmlack pressions griws vertically :
 
-    pressions|    0    |    1    |    2    |   3+
+    pressions|    0    |    1    |    2    | 3+ white
     ---------+---------+---------+---------+---------
         0    |  green  | more... |and more |  white
     ---------+---------+---------+---------+---------
@@ -16,8 +15,9 @@ It uses a colored gradient schema to do it. If we represent this gradient in a 4
     ---------+---------+---------+---------+---------
         2    | & more  |   ...   | orange  |   ...
     ---------+---------+---------+---------+---------
-        3+   | black   |   ...   |   ...   |   red
+    3+ black | black   |   ...   |   ...   |   red
 
-As of you can easily see what's happen !
+With that you can easily see what's happening !
+
 
 

@@ -1,15 +1,32 @@
 # TODO-LIST
 
-## en-passant casts casts and move
-
 ## get_capture output
+
+* alter file : src/index.js
+
+## en-passant cast  and move
+
+* required to have a normally playable game
+* need to alter: src/rules/cast-pawn-moves.js
+* need to alter: src/rules/make-pawn-moves.js
+
+## rules-filthy-moves
+
+* to get a fully playable engine
+
+* be able to compute FEN digests to compare board positions
+* or another  serialize and compress mechanism (JSON...)
 
 ## fast iterator trie traversal on pipeleline
 
-## pipeline: need to be able to dig deeper
+* record accessing N-ary trees
 
-## piepline: ghosts and spies for AI
+## pipeline: need to be able to dig with more depth
 
 ## game metrics: KAM triangles (King-Attack-MAss)
+
+## pipepline: ghosts and spies for AI
+
+
 
 
