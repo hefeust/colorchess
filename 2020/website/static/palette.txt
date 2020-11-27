@@ -1,0 +1,15 @@
+r: XX XX XX ff
+r: XX 77 aa dd
+r: XX 55 88 bb
+r: 00 33 66 99
+
+g: 99 bb dd ff
+g: 66 77 66 XX
+g: 33 33 55 XX
+g: 00 XX XX XX
+
+r: XX 00 00 ff
+r: XX XX 00 00
+r: XX XX XX 00
+r: XX XX XX XX
+

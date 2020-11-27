@@ -1,0 +1,21 @@
+
+Les premiers tests avec la transoprence tendent à montrer que le paramètres "opacité" n'est pas suffisant pour obtneir un beau rendu de code couleurn  sur un échiquier. Sans doute faudra-t-il adapter l'outil pour ajouter la composante de transparence (APLHA).
+
+Cette observation tient compte de ma difficulté à percevoir les pions blancs sur des cases blanches, et les pions noirs sur des cases noires.
+
+Peut -etre faudra-til- jouer avec le RGBA  et le blend mode (add, Multiply, ...) ?
+
+Par ailleurs je me fais la réflexion d'un graident de couleurs 4D RGBA bien ajusté pourrait d'un point de vue perceptif, permettre d'apéhender simpmplement la notion de vibration lumineuse au dela du spectre visible. 
+
+En effet, si on considère une lampe Infrarouge, ou une lampe UV (à la rigueur une vieille ampoule VS le soleil) on pourrait peut être en regardant la façon dont leur spectre visible s'étend obtenir  la sensation de: "qu'est ce qu'il y a au dela de ce que je perçois" ? (métaphysique !!!).
+
+La nuit porte conseil.
+
+ET si au lieu de chercher à implémenter ou comprendre la nature exacte des finbctions de conversion RGB <---> HSL (+ transparence), on regardait plutôt leur différentielle ???
+
+Un peu comme les ofnctions thermodynamiques ???
+
+
+
+
+

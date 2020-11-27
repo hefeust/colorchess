@@ -1,0 +1,63 @@
+
+
+# SCHEDULE for November 2020
+* November 2020, week 2: (website)
+    ** setup:  svelte-preprocess-markdown and prepare Guides pages
+    ** wiring Guides pages
+    ** fix some interfaces issues
+    ** captures box
+    ** flags visibilty
+
+* November 2020: week 3: (engine)
+    ** correct pawn moves generation
+    ** implement castling moves
+    ** implement en-passant moves
+    ** implement check tests
+    ** impelment end-game tests
+
+# whole application
+
+* integrate Bulma CSS framework
+* integrate font icons lib
+* integrate svelte-markdown for guides pages
+* clean interface
+* add "guide" and "about" pages
+* add "making-of" instead pf "blog" section
+
+
+# gamezone: board
+
+* responsivness: adjust board dimensions with viewport dimensions (svelte:options view<port)
+* add support for gradient layer on tiles
+* clean POVs east and west
+* timer and blind when updating POVs
+* messaging system ()
+* create metrics layer (King-Attack-Mass trangles) --> LATER
+
+# gamezone: near sqaures
+
+* colors layer
+* support for drag and drop --> LATER
+* support for touch events --> LATER
+
+
+# gameoznr: captures box
+
+* Points-Of-View
+* Colors switcher
+* KAM triangles
+
+# game options panel
+
+# playing guide section
+
+# making-of pages section
+
+* graphic interface
+* game engine
+* bot and AI
+* toolkit and maths
+
+
+# history
+

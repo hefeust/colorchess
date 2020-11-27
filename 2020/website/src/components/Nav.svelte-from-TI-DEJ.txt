@@ -1,0 +1,53 @@
+
+<script>
+    import Fa from 'svelte-fa'
+    import { faMugHot } from '@fortawesome/free-solid-svg-icons'
+	
+    export let segment;
+
+    const handle_burger_click = (evt) => {
+        burger_is_active = ! burger_is_active
+    }
+
+    const reset_burger = () => burger_is_active = false
+
+    let burger_is_active = false
+</script>
+
+<nav class="navbar is-warning" role="navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/" on:click={ reset_burger }>
+             <Fa icon={faMugHot} size="2x"/> 
+            <span  class="title is-3">&nbsp;</span>
+            <span class="title is-3"> 'ti-dej</span>
+        </a>
+
+        <p role="button" class="navbar-burger" href=""
+            aria-label="menu" aria-expanded="false" 
+            on:click={ handle_burger_click } class:is-active={ burger_is_active }>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </p>
+    </div>
+    <div class="navbar-menu" class:is-active={ burger_is_active }>
+
+      	<div class="navbar-item" >
+            <a on:click={ reset_burger } aria-current="{segment === undefined ? 'page' : undefined}" href="/">
+                Accueil
+            </a>
+        </div>
+
+      	<div class="navbar-item" >
+            <a on:click={ reset_burger } aria-current="{segment === 'competences' ? 'page' : undefined}" href="/cv">
+                Curriculum Vitae
+            </a>
+        </div>
+
+  		<div class="navbar-item">
+            <a on:click={ reset_burger } aria-current="{segment === 'projets' ? 'page' : undefined}"  href="projets">
+                Projets
+            </a>
+        </div>
+    </div>
+</nav>

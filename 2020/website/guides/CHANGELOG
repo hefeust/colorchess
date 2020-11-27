@@ -1,0 +1,21 @@
+
+2020-11-01: acquiring codebase...
+2020-11-02: re-organizing folder structures (compopnents, helpers, stores)
+2020-11-02: re-writing GameStore and POVStore
+2020-11-02: re-writing TilesLayer and Tile
+2020-11-02: re-writing src/components/board-area, TilesLayer and Tile
+2020-11-02: fixing appearance details for graphics in Tile
+2020-11-04: now pieces can move basically
+2020-11-04: fixing bugs on Points-Of-View options setup
+2020-11-04: creating oldies (src backup) folder and populate it. Backup on USB key
+2020-11-05: Preparing gradient ColorSelector component and 'gradient.svelte' page
+2020-11-09: Preparing pressions gradient editor... OK
+2020-11-11: setup Bulma CSS and adapt code
+2020-11-11: setup domain, hosting and upload (sftp) the first version !
+2020-11-12: Adding @options-panel/DebugLevelSelector component 
+2020-11-12: Adding @stores/UserDebugStore.js store
+2020-11-12: Modify Options.svelte page to integrate DebugLevelSelector
+2020-11-12: installing svelte-preprocess-markdown and modufiy rollup.config.js
+2020-11-12: setting up markdown files for guides section. Need to be written !!!
+
+

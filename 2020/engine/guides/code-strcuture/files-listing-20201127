@@ -1,0 +1,33 @@
+
+# ls src/* on 2020-11-27 (should modify in future)
+
+src/index.js
+
+src/assets:
+standard-position.js
+
+src/core:
+board.js  captures.js  flags.js  groups.js  pieces.js  refs.js  sides.js
+
+src/game:
+context.js  generator.js  paths_iterator.js  position.js  raycaster.js  referee.js
+
+src/io:
+FEN.js  str_dump.js
+
+src/metrics:
+
+src/ops:
+play.js  setup.js  undo.js
+
+src/pieces:
+bishop.js  king.js  knight.js  pawn.js  queen.js  rook.js
+
+src/rules:
+cast-castling-moves.js.js  make-castling-moves.js  ply-turn.js
+cast-delta-moves.js        make-delta-moves.js     test-checkings.js
+cast-pawn-moves.js         make-pawn-moves.js      test-ending.js
+
+src/utils:
+logger.js  referee.js
+

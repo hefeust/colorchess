@@ -1,0 +1,15 @@
+
+[2020-10-20]: acquiring existing codebas...
+[2020-10-20]: rewriting src/core/flags.js 
+[2020-10-20]: rewriting src/core/sides.js (get_side_param)
+[2020-11-17]: rewriting src/game/raycaster.js to fix some inconsistencies
+[2020-11-18]: writing src/rules/cast-castling-moves.js 
+[2020-11-18]: writing src/rules/make-castling-moves.js
+[2020-11-18]: writing src/rules/test-checking.js
+[2020-11-25]: modiying src/game/generator.js (pipelined rules)
+[2020-11-26]: correcting src/rules/test-checkings
+[2020-11-26]: correcting src/rules/make-pawn-moves.js
+[2020-11-26]: correcing raycaster (casts and get_starts_to)
+[2020-11-26]: TODO: en-passant and get_captures, 
+[2020-11-26]:       but now engine can play Legal (1715) checkmate game
+

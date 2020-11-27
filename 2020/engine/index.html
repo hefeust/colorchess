@@ -1,0 +1,37 @@
+<!dcotype html>
+<html>
+    <head>
+    
+        <link rel="stylesheet"  href="./artwork/styles.css"" />
+    </head>
+    <body>
+
+        <div class="game">
+            <p>ColorChees</p>        
+            <div class="topbar">
+                <p> { scores }  { actions } </p>
+            </div>
+            <div class="slot">
+                <div class="board">
+                    { echiquier }
+                </div>
+            </div>
+            <div class="footer">
+                { captures } { modes }
+            </div>
+        </div>
+        
+        <script src="./dist/index.js" ></script>
+        <script>
+            var engine = ColorChessEngine.create_engine({})
+            
+            var str = [
+                '<textarea cols="80" rows="32">', 
+                engine,
+                 '</textarea>'
+            ].join('\n\n')
+            
+            document.write(str)
+        </script>
+    </body>
+</html>
