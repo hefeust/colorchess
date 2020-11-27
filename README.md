@@ -3,7 +3,7 @@
 
 Colorchess is a colored chess playing tactical helper.
 
-It emphazizes the chess board surface by coloring its squares according to pressions balance of both sides on them sueing game.
+It emphasizes the chess board surface by coloring its squares according to pressions balance of both sides on them sueing game.
 
 Here's a resume of these color scheme, where white pression grows horizontally and bmlack pressions griws vertically :
 
@@ -19,5 +19,7 @@ Here's a resume of these color scheme, where white pression grows horizontally a
 
 With that you can easily see what's happening !
 
+Here's a sample screen capture of the game in action:
 
+![Colorchess frist runs in colored mode](images/colorchess-first-runs.png)
 
