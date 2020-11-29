@@ -24,7 +24,7 @@ export const create_context = (options) => {
             return 'ILLEGAL; ' + subpath
         }).length
     
-        text += '\n\n\n'
+        text += '\n'
 
         return text
     }
@@ -100,10 +100,10 @@ export const create_context = (options) => {
             [basepath]
         ]
 
-        console.log('ctx.stupid_subpaths')
-        console.log('    depth = ' + depth )
-        console.log('    aparture = ' + aperture )
-        console.log('    basepath = ' + basepath )
+//        console.log('ctx.stupid_subpaths')
+//        console.log('    depth = ' + depth )
+//        console.log('    aparture = ' + aperture )
+//        console.log('    basepath = ' + basepath )
 
         if(depth >= 0) {
             range.map((_, idx) => {

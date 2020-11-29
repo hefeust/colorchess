@@ -4,13 +4,33 @@ export const create_captures = (options) => {
     const pieces = []
  
     const submit = (piece) => {
+        let fen = '.'
+
         if(!piece) return null
+        if(piece.fen) {
+            // for old rules versions
+            fen = piece.fen
+        } else {
+            fen = piece
+        }
     
-        pieces.push ( piece )
+        pieces.push ( fen  )
     }
  
-    const list = (side) => {
-        return pieces.filter ((piece) => piece.side === side)
+    const get_captured_by = (attacker_side) => {
+        // note: (for AI stuff) kings could be captured in ghosts and spies evaluation
+        // normal engine ctx evaluation and user interface should avoid this
+        const black_pieces = 'kqrbnp'.split('')
+        const white_pieces = 'KQRBNP'.split('')
+
+        return pieces.filter ((fen) => { 
+            let pieces_to_filter = []
+
+            if(attacker_side === 'black') pieces_to_filter = white_pieces
+            if(attacker_side === 'white') pieces_to_filter = black_pieces
+
+            return (pieces_to_filter.indexOf(fen) > -1)
+        })
     }
  
     const _each = ((cb) => {
@@ -26,14 +46,17 @@ export const create_captures = (options) => {
     }
 
     const toString = () => {
-        const texts = ['### CAPTURES ###']
+        let text = '### CAPTURES ###' + '\n'
+
+        text += '[by black]: ' + get_captured_by('black').join(' ') + '\n'
+        text += '[by white]: ' + get_captured_by('white').join(' ') + '\n'
+
+        console.log(pieces)
         
-        
-        
-        return texts.join ('\n') + '\n'
+        return text
     }
  
     return {
-        submit, list,  fork, toString
+        submit, get_captured_by,  fork, toString
     }   
 }

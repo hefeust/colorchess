@@ -33,12 +33,14 @@ export const create_position = (other) => {
             lines.push(((spaces_8 + board_lines[i]).padEnd(32, ' ') + flags_lines[i]).padEnd(64, ' '))
         }
 
-        lines.push('')
-        lines.push('Captured:')
-        lines.push('White:  ')
-        lines.push('Black:  ')
+//        lines.push('')
+//        lines.push('Captured:')
+//        lines.push('White:  ')
+//        lines.push('Black:  ')
 
-        return lines.slice(0, 24).join('\n')
+        lines.push(captures.toString())
+    
+        return lines.slice(0, 21).join('\n')
     }
 
     const api = {

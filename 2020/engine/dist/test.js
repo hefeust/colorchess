@@ -1186,13 +1186,33 @@
           var pieces = [];
        
           var submit = function (piece) {
+              var fen = '.';
+
               if(!piece) { return null }
+              if(piece.fen) {
+                  // for old rules versions
+                  fen = piece.fen;
+              } else {
+                  fen = piece;
+              }
           
-              pieces.push ( piece );
+              pieces.push ( fen  );
           };
        
-          var list = function (side) {
-              return pieces.filter (function (piece) { return piece.side === side; })
+          var get_captured_by = function (attacker_side) {
+              // note: (for AI stuff) kings could be captured in ghosts and spies evaluation
+              // normal engine ctx evaluation and user interface should avoid this
+              var black_pieces = 'kqrbnp'.split('');
+              var white_pieces = 'KQRBNP'.split('');
+
+              return pieces.filter (function (fen) { 
+                  var pieces_to_filter = [];
+
+                  if(attacker_side === 'black') { pieces_to_filter = white_pieces; }
+                  if(attacker_side === 'white') { pieces_to_filter = black_pieces; }
+
+                  return (pieces_to_filter.indexOf(fen) > -1)
+              })
           };
 
           var fork = function () {
@@ -1204,15 +1224,18 @@
           };
 
           var toString = function () {
-              var texts = ['### CAPTURES ###'];
+              var text = '### CAPTURES ###' + '\n';
+
+              text += '[by black]: ' + get_captured_by('black').join(' ') + '\n';
+              text += '[by white]: ' + get_captured_by('white').join(' ') + '\n';
+
+              console.log(pieces);
               
-              
-              
-              return texts.join ('\n') + '\n'
+              return text
           };
        
           return {
-              submit: submit, list: list,  fork: fork, toString: toString
+              submit: submit, get_captured_by: get_captured_by,  fork: fork, toString: toString
           }   
       };
 
@@ -1473,12 +1496,14 @@
                   lines.push(((spaces_8 + board_lines[i]).padEnd(32, ' ') + flags_lines[i]).padEnd(64, ' '));
               }
 
-              lines.push('');
-              lines.push('Captured:');
-              lines.push('White:  ');
-              lines.push('Black:  ');
+      //        lines.push('')
+      //        lines.push('Captured:')
+      //        lines.push('White:  ')
+      //        lines.push('Black:  ')
 
-              return lines.slice(0, 24).join('\n')
+              lines.push(captures.toString());
+          
+              return lines.slice(0, 21).join('\n')
           };
 
           var api = {
@@ -1527,7 +1552,7 @@
                   return 'ILLEGAL; ' + subpath
               }).length;
           
-              text += '\n\n\n';
+              text += '\n';
 
               return text
           };
@@ -1606,10 +1631,10 @@
                   [basepath]
               ];
 
-              console.log('ctx.stupid_subpaths');
-              console.log('    depth = ' + depth );
-              console.log('    aparture = ' + aperture );
-              console.log('    basepath = ' + basepath );
+      //        console.log('ctx.stupid_subpaths')
+      //        console.log('    depth = ' + depth )
+      //        console.log('    aparture = ' + aperture )
+      //        console.log('    basepath = ' + basepath )
 
               if(depth >= 0) {
                   range.map(function (_, idx) {
@@ -2758,8 +2783,11 @@
           /**
            * captures list for given side
            */
-          var get_captures = function (side) {
-              return ctx.captured(side)
+          var get_captured_by = function (side) {
+              var ref = ctx.current_position;
+              var captures = ref.captures;
+
+              return captures.get_captured_by(side)
           };
           
           /**
@@ -2799,7 +2827,7 @@
               get_whois: get_whois,
               get_pressions: get_pressions,
               get_flag: get_flag,
-              get_captures: get_captures,
+              get_captured_by: get_captured_by,
               get_flags_pairs: get_flags_pairs,
               toString: toString,
               prettified: prettified,
@@ -2820,7 +2848,6 @@
   });
 
   var engine = dist.create_engine ({
-      gas_level: 0    ,
       log_level: 0
   });
 

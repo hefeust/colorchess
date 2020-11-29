@@ -76,8 +76,10 @@ export const create_engine = (options) => {
     /**
      * captures list for given side
      */
-    const get_captures = (side) => {
-        return ctx.captured(side)
+    const get_captured_by = (side) => {
+        const { captures } = ctx.current_position
+
+        return captures.get_captured_by(side)
     }
     
     /**
@@ -121,7 +123,7 @@ export const create_engine = (options) => {
         get_whois,
         get_pressions,
         get_flag,
-        get_captures,
+        get_captured_by,
         get_flags_pairs,
         toString,
         prettified,
