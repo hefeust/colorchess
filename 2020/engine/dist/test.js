@@ -1091,7 +1091,7 @@
 
       var defaults =  new Map([
 
-          ['ply-turn', 0],
+          ['ply-turn', 1],
           ['half-turn', 0],
           ['current-player', 'white'],
           ['black-O-O-O', true],
@@ -2076,9 +2076,8 @@
           var captures = position.captures;
           var raycaster = position.raycaster;    
 
-      //    const locations = board.select('pawn')
-      //    const side_to_move = flags.get_pair('current-player').value
-          var futures = [];
+          // future moves
+          var moves = [];
 
           var proponent = flags.get_pair('current-player').value;
           var opponent = (proponent === 'white') ? 'black' : 'white';
@@ -2086,67 +2085,96 @@
           var our_pawns_refs = board.select(['pawn', proponent]);
           var all_their_refs = board.select([opponent]);
 
+          var promote_row = get_side_param(proponent, 'promote-row');
+          var home_row = get_side_param(proponent, 'home-row');
+
           log('# RULE: make-pawn-moves');
           log('\t our_pawns_refs count =' + our_pawns_refs.length);
-
 
           debug({ params: params });
           debug({ our_pawns_refs: our_pawns_refs, all_their_refs: all_their_refs });
 
-          our_pawns_refs.map(function (src_ref, sridx) {
-              var dests = raycaster.get_dests_for(src_ref);
+          our_pawns_refs.map(function (src, sidx) {
+              var dests = raycaster.get_dests_for(src);
 
-              log('    trying move #' + sridx + ' from ref = ' + src_ref);        
-      //        debug({ dests })        
+              log('    trying move #' + sidx + ' from ref = ' + src);        
+              debug({ dests: dests });        
               log('\t' + dests.join(', '));
               log('\t' + dests.length);
 
-              dests.map(function (dest_ref, drix) {
-                  var attacker_refs = raycaster.get_starts_to(dest_ref);
-                  var subpath = [src_ref, dest_ref].join(':');        
+              dests.map(function (dest, drix) {
+                  var move = {
+                      src: src, 
+                      dest: dest,
+                      promoted_fen: null,
+                      en_passant: flags.get_pair('en-passant').value
+                  };
 
-                  if(attacker_refs.indexOf(src_ref) === -1) { return null }
+                  var attacker_refs = raycaster.get_starts_to(dest);
 
-      //            if(piece_to_move.side !== side_to_move) return null
-      //            if(is_attacker && !piece_capture) return null
-      //            if(!is_attacker && piece_capture) return null
+                  if(attacker_refs.indexOf(src) === -1) { return null }
 
-
-                  if(dest_ref[1] === get_side_param(proponent, 'promote-row') ) {
+                  // promotions
+                  if(dest[1] === promote_row) {
+      //            if(dest_ref[1] === get_side_param(proponent, 'promote-row') ) {
                       promoted(proponent).map(function (promoted_fen) {
-                          futures.push(subpath + '=' + promoted_fen);
+                          move.promoted_fen = promoted_fen;
+                          moves.push(move);
                       });
                   } else {
-                      futures.push(subpath);
+                      moves.push(move);
                   }
               });
           });
        
-          log('    found futures, count = ' + futures.length);    
+          log('    found moves, count = ' + moves.length);    
 
-          futures.map(function (subpath) {
-              var forked = ctx.fork(selector, subpath);
+          moves.map(function (move) {
+              var subpath = '';
+              var forked = null;
+              var fen_src, fen_dest, fen_promote;
+              var delta_row, seq;
 
-              // a2:a4
-              // b7:b8=Q
-              var src = subpath.substr(0, 2);
-              var dest = subpath.substr(3, 2);
-              var fen_promote = subpath.substr(6, 1); // more often an empty string...
+              subpath = move.src + ':' + move.dest;
 
-              var fen_attacker = forked.board.whois(src);
-              var fen_capture = forked.board.whois(dest);
+              if(move.promote) {
+                  subpath += '=' + move.promote;
+              }        
 
-              forked.board.remove(src);
-              forked.board.remove(dest);
-         
-              if(fen_promote === '') {
-                  forked.board.place(dest, fen_attacker);
-              } else {
-                  forked.board.place(dest, fen_promote);
+              if(move.en_passant !== NULL_REF) {
+                  delta_row = get_side_param(proponent, 'delta-row');
+                  seq = move.en_passant.sequence({ col: 0, row: -1 * delta_row });
+
+                  forked.board.remove(seq[1]);
               }
-                  
-             if(fen_capture) { forked.captures.submit(fen_capture); }
-         });    
+
+              forked = ctx.fork(selector, subpath);
+
+              fen_src = board.whois(move.src);
+              fen_dest = board.whois(move.dest);
+
+
+
+              forked.board.remove(move.src);
+              forked.board.remove(move.dest);
+         
+              if(move.promote) {
+                  forked.board.place(move.dest, fen_promote);
+              } else {
+                  forked.board.place(move.dest, fen_src);
+              }
+
+              if(fen_dest) { forked.captures.submit(fen_dest); }
+
+              if(move.src[1] === home_row) {
+                  delta_row = get_side_param(proponent, 'delta-row');
+                  seq = move.src.sequence({ col: 0, row: delta_row });
+
+                  forked.flags.set_pair('en-passant', seq[1]);    
+              }
+
+              forked.board.place(move.dest, fen_promote);
+         });
       };
 
       var cast_castling_moves = function (ctx, params) {
@@ -2875,6 +2903,7 @@
           console.log('' + engine);
       } catch(error) {
           console.log('ERROR!');
+          throw new Error(error)
       }
   });
 

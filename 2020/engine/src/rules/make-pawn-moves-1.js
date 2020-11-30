@@ -48,16 +48,16 @@ export const make_pawn_moves = (ctx, params) => {
             const move = {
                 src, 
                 dest,
-                promoted_fen: null,
+                promoted_fen: null
                 en_passant: flags.get_pair('en-passant').value
             }
 
-            const attacker_refs = raycaster.get_starts_to(dest)
+            const attacker_refs = raycaster.get_starts_to(dest_ref)
 
-            if(attacker_refs.indexOf(src) === -1) return null
+            if(attacker_refs.indexOf(src_ref) === -1) return null
 
             // promotions
-            if(dest[1] === promote_row) {
+            if(dest_ref[1] === promote_row) {
 //            if(dest_ref[1] === get_side_param(proponent, 'promote-row') ) {
                 promoted(proponent).map((promoted_fen) => {
                     move.promoted_fen = promoted_fen
@@ -106,7 +106,7 @@ export const make_pawn_moves = (ctx, params) => {
             forked.board.place(move.dest, fen_src)
         }
 
-        if(fen_dest) forked.captures.submit(fen_dest)
+        if(fen_dest) forked.captures.submit(fen_capture)
 
         if(move.src[1] === home_row) {
             delta_row = get_side_param(proponent, 'delta-row')

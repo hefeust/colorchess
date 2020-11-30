@@ -1,7 +1,7 @@
 
 const defaults =  new Map([
 
-    ['ply-turn', 0],
+    ['ply-turn', 1],
     ['half-turn', 0],
     ['current-player', 'white'],
     ['black-O-O-O', true],

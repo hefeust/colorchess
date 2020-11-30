@@ -32,6 +32,7 @@ moves.map((move, midx) => {
         console.log('' + engine)
     } catch(error) {
         console.log('ERROR!')
+        throw new Error(error)
     }
 }) 
 
