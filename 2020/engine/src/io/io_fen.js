@@ -7,7 +7,11 @@
  */
 export const create_io_fen = (ctx) => {
 
-    const reset = (fen_str) => {}
+    const load = (fen_str) => {
+        const records = fen_str.split(' ')
+
+        
+    }
 
     const dump = (selector) => {}
 

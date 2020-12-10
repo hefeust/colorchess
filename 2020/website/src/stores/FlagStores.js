@@ -18,7 +18,7 @@ const flags_names = [
 export const FlagStores = derived(GameStore, ($game) => {
 
     return (name) => {
-        console.log({ FlagStore_name: name })
+//        console.log({ FlagStore_name: name })
 
         return GameStore.get_flag(name)
     }

@@ -38,7 +38,7 @@ export const ClickMoveStore = derived([GameStore, ClickedStore], ([$game, $click
 
     let message = 'click on start then destination refs'
 
-    console.log($clicked)
+//    console.log($clicked)
 
     if(past && now) {
         switch(filtered.length) {

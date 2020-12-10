@@ -29,6 +29,7 @@ const aliases = alias({
     entries: {
         '@engine': '../engine/dist/index.js',
         '@game-zone': 'src/components/game-zone',
+        '@modal-boxes': 'src/components/modal-boxes',
         '@options-panel': 'src/components/options-panel',
         '@helpers': 'src/helpers',
         '@stores': 'src/stores',

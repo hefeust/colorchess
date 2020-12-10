@@ -43,6 +43,7 @@ const createGameStore = () => {
     
     return {
         subscribe,
+
         play: (move) => {
             const result = engine.play(move)
 
@@ -56,13 +57,15 @@ const createGameStore = () => {
 
         get_pressions: (ref) => engine.get_pressions(ref),
 
-
         get_flag: (name) => {
             console.log({ GameStore_get_flag : engine.get_flag(name) })
             return engine.get_flag(name)
         },
-        get_futures: () => engine.get_futures()
+
+        get_futures: () => engine.get_futures(),
         
+        get_captured_by: (side) => engine.get_captured_by(side)
+
     }    
 }
 

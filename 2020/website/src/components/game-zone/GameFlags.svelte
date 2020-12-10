@@ -6,11 +6,11 @@
 
     const castlings = (oo, ooo) => {
         if(oo && ooo) {
-            return 'Both ling and queen sides'
+            return 'Both king and queen sides'
         } else if(oo) {
-            return 'limited to king side (O-O)'
+            return 'only king side (O-O)'
         } else if(ooo) {
-            return 'limited to queen side (O-O-O)'
+            return 'only queen side (O-O-O)'
         } else {
             return 'no more castling abilities'
         }

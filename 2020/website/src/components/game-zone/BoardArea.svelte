@@ -6,6 +6,8 @@
     import { FlagStores } from '@stores/FlagStores.js'
     import { UserDebugStore } from '@stores/UserDebugStore.js'
 
+    import { ShowPromoteModal } from '@stores/ModalStores.js'
+
     import SVGDefs from '@game-zone/SVGDefs.svelte'
     import TilesLayer from '@game-zone/TilesLayer.svelte'
     import SpritesLayer from '@game-zone/SpritesLayer.svelte'
@@ -39,6 +41,10 @@
         
         viewBox = [-0.5, -0.5, w + 1, h + 1].join(' ')    
     }
+
+    const show_promote_modal = () => {
+        ShowPromoteModal.update((state) => true)
+    }
 </script>
 
 <svelte:window bind:innerHeight={ innerHeight} bind:innerWidth={ innerWidth} />
@@ -59,6 +65,11 @@
         <p> clicked: { $ClickedStore.past } { $ClickedStore.now } </p>
         <p> message: { $ClickMoveStore }  </p>
         <p> POV: { $RealPOVStore }  </p>
+        <p>
+            <button class="button is-danger" on:click={ () => show_promote_modal() }>
+                Show Promote Modal
+            </button>
+        </p>
     </div>
 {/if}
 <style>

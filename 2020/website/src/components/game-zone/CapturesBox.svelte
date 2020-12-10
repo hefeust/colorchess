@@ -28,6 +28,11 @@
         
   //      viewBox = [-0.5, -0.5, w + 1, h + 1].join(' ')    
     }
+
+    const black_pieces = []
+
+    const white_pieces = []
+
 </script>
 
 <svelte:window bind:innerHeight={ innerHeight} bind:innerWidth={ innerWidth} />
@@ -39,6 +44,18 @@
     version="1.1">
  
    <SVGDefs />
+    <g class="captures">
+        <g class="black">
+            {#each black_pieces as black_piece }
+                
+            {/each}
+        </g>
+        <g class="white">
+            {#each black_pieces as black_piece }
+                
+            {/each}        
+        </g>
+    </g>
 </svg>
 
 <style>

@@ -2,18 +2,18 @@
 
 # SCHEDULE for November 2020
 * November 2020, week 2: (website)
-    ** setup:  svelte-preprocess-markdown and prepare Guides pages
-    ** wiring Guides pages
+    ++ setup:  svelte-preprocess-markdown and prepare Guides pages
+    ++ wiring Guides pages
     ** fix some interfaces issues
     ** captures box
-    ** flags visibilty
+    ++ flags visibilty
 
 * November 2020: week 3: (engine)
-    ** correct pawn moves generation
-    ** implement castling moves
-    ** implement en-passant moves
-    ** implement check tests
-    ** impelment end-game tests
+    ++ correct pawn moves generation
+    ++ implement castling moves
+    ++ implement en-passant moves
+    ++ implement check tests
+    ++ impelment end-game tests
 
 # whole application
 
