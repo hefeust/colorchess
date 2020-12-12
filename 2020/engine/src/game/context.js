@@ -48,7 +48,7 @@ export const create_context = (options) => {
     }
 
     const peek = (selector) => {
-        log('# context.peek, with selector: ' + selector)
+       //  log('# context.peek, with selector: ' + selector)
         
         return trie.value (selector)
     }

@@ -17,4 +17,5 @@
 2020-11-12: Modify Options.svelte page to integrate DebugLevelSelector
 2020-11-12: installing svelte-preprocess-markdown and modufiy rollup.config.js
 2020-11-12: setting up markdown files for guides section. Need to be written !!!
+2020-12-11: modal dialogs and stores for pomotion
 

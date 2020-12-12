@@ -5,8 +5,8 @@ import { create_piece } from '../core/pieces.js'
 import { get_side_param } from '../core/sides.js'
 
 const promoted = (side) => {
-    if(side === 'black') return 'q,r,b,n'.split(',')
-    if(side === 'white') return 'Q,R,B,N'.split(',')
+    if(side === 'black') return 'qrbn'.split('')
+    if(side === 'white') return 'QRBN'.split('')
     return [] // do not promote if neutral...
 }
 
@@ -24,7 +24,7 @@ export const make_pawn_moves = (ctx, params) => {
     const our_pawns_refs = board.select(['pawn', proponent])
     const all_their_refs = board.select([opponent])
 
-    const promote_row = get_side_param(proponent, 'promote-row')
+    const promote_row = get_side_param(proponent, 'promote-row').value
     const home_row = get_side_param(proponent, 'home-row')
 
     let delta_row = 0
@@ -54,17 +54,28 @@ export const make_pawn_moves = (ctx, params) => {
 
             const attacker_refs = raycaster.get_starts_to(dest)
 
+            // bconsole.log(attacker_refs)
+            // console.log({ dest })
+            // console.log(promote_row)
+
             if(attacker_refs.indexOf(src) === -1) return null
 
+//            if(all_their_refs.indexOf(dest) === -1) return null
+
             // promotions
-            if(dest[1] === promote_row) {
-//            if(dest_ref[1] === get_side_param(proponent, 'promote-row') ) {
+            if(dest[1] == promote_row) {
+
                 promoted(proponent).map((promoted_fen) => {
-                    move.promoted_fen = promoted_fen
-                    moves.push(move)
+                    // console.log({ promoted_fen })
+
+                    moves.push({
+                        src,  dest, promoted_fen, en_passant: NULL_REF
+                    })
                 })
             } else {
-                moves.push(move)
+                moves.push({
+                    src, dest, en_passant: flags.get_pair('en-passant').value
+                })
             }
         })
     })
@@ -79,29 +90,30 @@ export const make_pawn_moves = (ctx, params) => {
 
         subpath = move.src + ':' + move.dest
 
-        if(move.promote) {
-            subpath += '=' + move.promote
+        if(move.promoted_fen) {
+            subpath += '=' + move.promoted_fen
         }        
 
+        // console.log({ subpath })
+
+        forked = ctx.fork(selector, subpath)
+
         if(move.en_passant !== NULL_REF) {
-            delta_row = get_side_param(proponent, 'delta-row')
+            delta_row = get_side_param(proponent, 'delta-row').value
             seq = move.en_passant.sequence({ col: 0, row: -1 * delta_row })
 
             forked.board.remove(seq[1])
         }
 
-        forked = ctx.fork(selector, subpath)
 
         fen_src = board.whois(move.src)
         fen_dest = board.whois(move.dest)
 
-
-
         forked.board.remove(move.src)
         forked.board.remove(move.dest)
    
-        if(move.promote) {
-            forked.board.place(move.dest, fen_promote)
+        if(move.promoted_fen) {
+            forked.board.place(move.dest, move.promoted_fen)
         } else {
             forked.board.place(move.dest, fen_src)
         }

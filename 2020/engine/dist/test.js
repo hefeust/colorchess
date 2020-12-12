@@ -1335,7 +1335,7 @@
                           // if(seqidx === sray.shadow && ray.kind === RAY_OFFSET) return null
 
                           // capturing rays are not triggered by empty tiles !!!
-                          if(others.length == 0 && sray.kind === RAY_CAPTURE) { return null }
+                          if(others.length === 0 && sray.kind === RAY_CAPTURE) { return null }
 
                           // MUST NOT capture a friend piece !!!
                           if(others.length > 0 && others[0].side === sray.side) { return null }
@@ -1576,7 +1576,7 @@
           };
 
           var peek = function (selector) {
-              log('# context.peek, with selector: ' + selector);
+             //  log('# context.peek, with selector: ' + selector)
               
               return trie.value (selector)
           };
@@ -2063,8 +2063,8 @@
       };
 
       var promoted = function (side) {
-          if(side === 'black') { return 'q,r,b,n'.split(',') }
-          if(side === 'white') { return 'Q,R,B,N'.split(',') }
+          if(side === 'black') { return 'qrbn'.split('') }
+          if(side === 'white') { return 'QRBN'.split('') }
           return [] // do not promote if neutral...
       };
 
@@ -2085,7 +2085,7 @@
           var our_pawns_refs = board.select(['pawn', proponent]);
           var all_their_refs = board.select([opponent]);
 
-          var promote_row = get_side_param(proponent, 'promote-row');
+          var promote_row = get_side_param(proponent, 'promote-row').value;
           var home_row = get_side_param(proponent, 'home-row');
 
           log('# RULE: make-pawn-moves');
@@ -2112,17 +2112,28 @@
 
                   var attacker_refs = raycaster.get_starts_to(dest);
 
+                  // bconsole.log(attacker_refs)
+                  // console.log({ dest })
+                  // console.log(promote_row)
+
                   if(attacker_refs.indexOf(src) === -1) { return null }
 
+      //            if(all_their_refs.indexOf(dest) === -1) return null
+
                   // promotions
-                  if(dest[1] === promote_row) {
-      //            if(dest_ref[1] === get_side_param(proponent, 'promote-row') ) {
+                  if(dest[1] == promote_row) {
+
                       promoted(proponent).map(function (promoted_fen) {
-                          move.promoted_fen = promoted_fen;
-                          moves.push(move);
+                          // console.log({ promoted_fen })
+
+                          moves.push({
+                              src: src,  dest: dest, promoted_fen: promoted_fen, en_passant: NULL_REF
+                          });
                       });
                   } else {
-                      moves.push(move);
+                      moves.push({
+                          src: src, dest: dest, en_passant: flags.get_pair('en-passant').value
+                      });
                   }
               });
           });
@@ -2137,29 +2148,30 @@
 
               subpath = move.src + ':' + move.dest;
 
-              if(move.promote) {
-                  subpath += '=' + move.promote;
+              if(move.promoted_fen) {
+                  subpath += '=' + move.promoted_fen;
               }        
 
+              // console.log({ subpath })
+
+              forked = ctx.fork(selector, subpath);
+
               if(move.en_passant !== NULL_REF) {
-                  delta_row = get_side_param(proponent, 'delta-row');
+                  delta_row = get_side_param(proponent, 'delta-row').value;
                   seq = move.en_passant.sequence({ col: 0, row: -1 * delta_row });
 
                   forked.board.remove(seq[1]);
               }
 
-              forked = ctx.fork(selector, subpath);
 
               fen_src = board.whois(move.src);
               fen_dest = board.whois(move.dest);
 
-
-
               forked.board.remove(move.src);
               forked.board.remove(move.dest);
          
-              if(move.promote) {
-                  forked.board.place(move.dest, fen_promote);
+              if(move.promoted_fen) {
+                  forked.board.place(move.dest, move.promoted_fen);
               } else {
                   forked.board.place(move.dest, fen_src);
               }
@@ -2269,12 +2281,12 @@
               // rook path
               if(raycaster.get_starts_to(rpn).indexOf(rook_path[0]) === -1) { ok_rook = false; }
 
-              console.log({
-                  king_path: king_path,
-                  rook_path: rook_path,              
-                  ok_king: ok_king,
-                  ok_rook: ok_rook,
-              });
+      //        console.log({
+      //            king_path,
+      //            rook_path,              
+      //            ok_king,
+      //            ok_rook,
+      //        })
 
               if(ok_king && ok_rook) {
                   subpath = [king_path[0], king_path[2]].join(':');

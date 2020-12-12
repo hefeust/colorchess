@@ -13,7 +13,7 @@
     let debug
 
     $: {    
-        console.log('SpriteLayer POV=' + pov_name )
+//        console.log('SpriteLayer POV=' + pov_name )
 
         pov = get_pov_def(pov_name)          
         utils = get_board_utils(pov_name, 1.0)

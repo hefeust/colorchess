@@ -48,12 +48,12 @@ export const make_castling_moves = (ctx, params) => {
         // rook path
         if(raycaster.get_starts_to(rpn).indexOf(rook_path[0]) === -1) ok_rook = false
 
-        console.log({
-            king_path,
-            rook_path,              
-            ok_king,
-            ok_rook,
-        })
+//        console.log({
+//            king_path,
+//            rook_path,              
+//            ok_king,
+//            ok_rook,
+//        })
 
         if(ok_king && ok_rook) {
             subpath = [king_path[0], king_path[2]].join(':')

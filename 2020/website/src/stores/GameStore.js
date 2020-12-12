@@ -45,7 +45,10 @@ const createGameStore = () => {
         subscribe,
 
         play: (move) => {
+            console.log('GameStore.play: ' + move)
             const result = engine.play(move)
+
+//            console.log('' + engine)
 
 //            if(result) 
             update((counter) => counter + 1)
@@ -58,7 +61,7 @@ const createGameStore = () => {
         get_pressions: (ref) => engine.get_pressions(ref),
 
         get_flag: (name) => {
-            console.log({ GameStore_get_flag : engine.get_flag(name) })
+//            console.log({ GameStore_get_flag : engine.get_flag(name) })
             return engine.get_flag(name)
         },
 

@@ -11,7 +11,7 @@ pov.iterate((def) => {
     const { ref } = def
     
     const store = derived(GameStore, ($game) => {
-        console.log($game)
+//        console.log($game)
 
         return GameStore.get_whois(ref)
     })

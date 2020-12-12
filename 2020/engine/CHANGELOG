@@ -15,5 +15,6 @@
 [2020-11-29]:  get_captured_by(side) functions ( inindex.js, core/captures.js and game/osition.js)
 [2020-11-30]: preparing rules/make-pawn-moves for en-passant captures
 [2020-11-30]: fixing minor bug on falges:play-turn counter (initial value = 1)
+[2020-12-11]: correcting src/rules/make_pawn_moves (for promotion) OK
 
 

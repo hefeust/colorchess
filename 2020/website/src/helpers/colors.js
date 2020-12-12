@@ -1,21 +1,21 @@
 
 const raw_hexcodes_string = `
-#00dd9a
-#90ee90
-#98fa98
+#008000
 #ffffff
-#7f887f
-#eebbcd
-#ffeee0
-#ffa4c4
-#005500
-#802800
-#ff4500
-#ff7f50
+#ffffff
+#ffffff
 #000000
-#660000
-#881122
-#cd3333
+#cc8080
+#ccaaaa
+#ccaaaa
+#000000
+#800000
+#aa4000
+#aa4000
+#000000
+#800000
+#aa4000
+#aa0000
 `
 
 const hexcodes = raw_hexcodes_string.split('\n')
@@ -38,7 +38,7 @@ export const get_color = (balance) => {
     const idx = 4 * bidx + widx
 
 
-    console.log({ balance, [idx]: hexcodes[idx] })
+//    console.log({ balance, [idx]: hexcodes[idx] })
 
     return hexcodes[idx]
 }

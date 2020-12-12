@@ -1,7 +1,9 @@
-
+œ
 <script>
+    import { onMount } from 'svelte'
     import { FlagStores } from '@stores/FlagStores.js'
     import { ShowPromoteModal } from '@stores/ModalStores.js'
+    import { PromoteStore }  from '@stores/PromoteStore.js'
     import { promote_pieces } from '@helpers/promote-pieces.js'
 
     const promote_choices = (current_player) => {
@@ -25,12 +27,22 @@
     }
 
     const handle_submit = () => {
-       ShowPromoteModal.update((state) => false)
+        if(user_select !== -1) {
+            ShowPromoteModal.update((state) => false)
+//            console.log({ user_choice })
+            PromoteStore.update((state) => user_choice)
+//            PromoteStore.update((state) => null)
+        }
     }
 
     let show_promote_modal = false       
     let user_choice = null
     let user_select = -1
+
+    onMount(() => {
+        user_choice = null
+        user_select = -1
+    })
 
 </script>
 
@@ -50,7 +62,8 @@
                 {#each promote_choices($FlagStores('current-player')) as piece, index}
                     <div class="colmuns is-3">
                         <div class="box { index === user_select ? 'has-background-danger' : '' }">
-                            <figure on:click={() => { user_choice = piece.fen; user_select = index; } } class="image is-rounded is-64x64">
+                            <figure class="image is-rounded is-64x64"
+                                on:click={() => { user_choice = piece.fen; user_select = index; } } >
                                 <img src={ piece.path } title={ piece.name } />
                             </figure>
                         </div>

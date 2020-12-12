@@ -96,7 +96,7 @@ export const create_raycaster = () => {
                     // if(seqidx === sray.shadow && ray.kind === RAY_OFFSET) return null
 
                     // capturing rays are not triggered by empty tiles !!!
-                    if(others.length == 0 && sray.kind === RAY_CAPTURE) return null
+                    if(others.length === 0 && sray.kind === RAY_CAPTURE) return null
 
                     // MUST NOT capture a friend piece !!!
                     if(others.length > 0 && others[0].side === sray.side) return null
